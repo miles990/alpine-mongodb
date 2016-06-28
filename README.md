@@ -1,4 +1,4 @@
-# alpine-elasticsearch
+# alpine-mongodb
 MongoDB docker image of small size version.
 
 ## Base Image
@@ -14,7 +14,7 @@ docker run -p 27017:27017 -d miles990/alpine-mongodb
 `
 
 `
-docker run -p 27017:27017 -v $(pwd):/data/db -d miles990/alpine-elasticsearch
+docker run -p 27017:27017 -v $(pwd):/data/db -d miles990/alpine-mongodb
 `
 
 

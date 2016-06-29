@@ -2,22 +2,19 @@ FROM alpine:3.4
 
 MAINTAINER AlexLee <alexlee7171@gmail.com>
 
-# Update and install all of the required packages.
+# Install MongoDB
 # At the end, remove the apk cache
-RUN apk upgrade --update && \
-	apk add --update curl wget ca-certificates && \
-    rm -rf /var/cache/apk/*
 
-# Install Mongodb 3.2.7
-RUN wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.7.tgz && \
-	tar zxvf mongodb-linux-x86_64-3.2.7.tgz && \
-	rm mongodb-linux-x86_64-3.2.7.tgz && \
-	mv mongodb-linux-x86_64-3.2.7 mongodb 
+RUN apk add mongodb --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing --allow-untrusted && \
+	rm -rf /var/cache/apk/*
+
+# Create dbdata path
+RUN mkdir -p /data/db
 
 # Define mountable directories.
 VOLUME ["/data/db"]
 
 # Define default command.
-CMD ["/mongodb/bin/mongod"]
+CMD ["mongod"]
 
 EXPOSE 27017

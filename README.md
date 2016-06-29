@@ -2,11 +2,11 @@
 MongoDB docker image of small size version.
 
 ## Base Image
-- anapsix/alpine-java:jdk8
+- alpine:3.4
 
 ## Environment
 - Alpine Linux 3.4
-- MongoDB 3.2.7
+- MongoDB 3.2.4
 
 ## Run
 `
